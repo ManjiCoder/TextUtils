@@ -1,4 +1,4 @@
-import './TextForm.css';
+import './TextForm.css'; //Importing Custom CSS
 import React, { useState } from 'react' // Importing useState form React
 import PropTypes from 'prop-types'
 
@@ -6,39 +6,65 @@ export default function TextForm(props) {
     const handleUpClick = () => {
         let upperText = text.toUpperCase();
         setText(upperText)
-        // console.log(newText);
-        // console.log("Btn is clicked: " + text);
     }
     const handleOnChange = (extract) => {
         setText(extract.target.value)
         // setText('change')
-        // console.log("Onchange is clicked");
-    }
-    const clearAll = () => {
-        setText('')
-        // console.log("ClearALl is click");
     }
     const handleLwcase = () => {
         let lowerText = text.toLowerCase();
         setText(lowerText)
-        // console.log("Lowercase btn is clicked");
     }
-    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    const [text, setText] = useState(""); // use this line for deployment
+    const handleCapCase = () => {
+        let newText = text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) // This line credit goes to freecode.org
+        setText(newText)
+        console.log(newText);
+    }
+    const handleCopyToClipboard = () => {
+        let copyText = text;
+        navigator.clipboard.writeText(copyText)
+        setText('')
+    }
+    const handleRemoveExSpace = () => {
+        let removeSpace = text.replace(/\s+/g, ' ').trim();
+        setText(removeSpace)
+    }
+    const handleClearAll = () => {
+        setText('')
+    }
+    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    // const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 
     return (
-        <div className="container my-3">
-            <h1 className="mb-4">{props.heading}</h1>
-            <div className="mb-3">
-                <textarea className="form-control" value={text} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
-                <button className="btn btn-primary my-3" onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className="btn btn-primary mx-2" onClick={handleLwcase}>Convert to Lowercase</button>
-                <button className="btn btn-primary" onClick={clearAll}>Clear All</button>
+        <>
+            <div className="container my-3">
+                <h1 className="mb-4">{props.heading}</h1>
+                <div className="mb-4">
+                    <textarea className="form-control" value={text} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
+                </div>
+            </div>
+            <div className="container btn-container">
+                <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
+                <button className="btn btn-primary" onClick={handleLwcase}>Convert to Lowercase</button>
+                <button className="btn btn-primary" onClick={handleRemoveExSpace}>Remove Spaces</button>
+                <button className="btn btn-primary" onClick={handleCapCase}>Convert to Capitalize</button>
+                <button className="btn btn-primary" onClick={handleCopyToClipboard}>Copy To Clipboard</button>
+                {/* { 1 Liner Code} */}
+                {/* <button className="btn btn-primary" onClick={() => navigator.clipboard.writeText(text)}>Copy To Clipboard</button> */}
+                <button className="btn btn-primary" onClick={handleClearAll}>Clear All</button>
 
             </div>
-        </div>
+            <div className="container">
+                <h2 className="my-4 mb-3">Text Summary</h2>
+                {/* <p><span className="highlight">{() => { if (!text === '') { text.split(" ").length } }}</span> newText <span className="highlight">{text.length}</span> Length</p> */}
+                <p><span className="highlight">{text.split(" ").length}</span> newText <span className="highlight">{text.length}</span> Length</p>
+                <p><span className="highlight"> {0.008 * text.split(" ").length}</span> Minutes Read</p>
+                <h2 className="my-3">Live Preview</h2>
+                <div className="p-3 mb-5" id="resultBox">{text}</div>
+            </div>
+        </>
     )
 }
 
