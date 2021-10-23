@@ -42,10 +42,6 @@ p {
     display: grid;
     justify-content: space-around;
     grid-gap: 8px;
-    grid-template-columns:  repeat(auto-fit, minmax(100px, 182px));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 182px));
     grid-auto-columns: auto;
-}
-
-.btn-container>.btn {
-    /* margin: 16px 8px; */
 }

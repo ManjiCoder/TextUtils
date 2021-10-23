@@ -18,7 +18,7 @@ export default function TextForm(props) {
     const handleCapCase = () => {
         let newText = text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) // This line credit goes to freecode.org
         setText(newText)
-        console.log(newText);
+        // console.log(newText);
     }
     const handleCopyToClipboard = () => {
         let copyText = text;
@@ -32,8 +32,8 @@ export default function TextForm(props) {
     const handleClearAll = () => {
         setText('')
     }
-    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    // const [text, setText] = useState(""); // use this line for deployment
+    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 
