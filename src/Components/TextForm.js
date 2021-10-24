@@ -24,16 +24,19 @@ export default function TextForm(props) {
         let copyText = text;
         navigator.clipboard.writeText(copyText)
         setText('')
+
     }
     const handleRemoveExSpace = () => {
         let removeSpace = text.replace(/\s+/g, ' ').trim();
         setText(removeSpace)
+        // let removeSpace = text.split(/[ ]+/);
+        // setText(removeSpace.join(""))
     }
     const handleClearAll = () => {
         setText('')
     }
-    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    const [text, setText] = useState(""); // use this line for deployment
+    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    // const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 
@@ -59,10 +62,10 @@ export default function TextForm(props) {
             <div className="container">
                 <h2 className="my-4 mb-3">Text Summary</h2>
                 {/* <p><span className="highlight">{() => { if (!text === '') { text.split(" ").length } }}</span> newText <span className="highlight">{text.length}</span> Length</p> */}
-                <p><span className="highlight">{text.split(" ").length}</span> newText <span className="highlight">{text.length}</span> Length</p>
+                <p><span className="highlight">{text.split(" ").length}</span> Words <span className="highlight">{text.length}</span> Length</p>
                 <p><span className="highlight"> {0.008 * text.split(" ").length}</span> Minutes Read</p>
                 <h2 className="my-3">Live Preview</h2>
-                <div className="p-3 mb-5" id="resultBox">{text}</div>
+                <div className="p-3 mb-5" id="resultBox">{text.length > 0 ? text : "Enter some text to see preview"}</div>
             </div>
         </>
     )
