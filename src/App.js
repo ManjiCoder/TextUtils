@@ -49,6 +49,19 @@ function App() {
       document.getElementById("circle2").style.border = "2px solid white"
       document.getElementById("circle3").style.border = "2px solid white"
       document.getElementById("circle4").style.border = "2px solid white"
+      document.title = "TextUlits - Dark"
+    /* 
+      // This is not user friendly
+      setInterval(() => {
+        document.title = "TextUlits - is Amazing"
+      }, 1500);
+      setInterval(() => {
+        document.title = "TextUlits - Install Now"
+      }, 1000);
+      setInterval(() => {
+        document.title = "TextUlits - is Amazing"
+      }, 1500);
+    */
     }
     else {
       setMode('light')
@@ -64,6 +77,7 @@ function App() {
       document.getElementById("circle2").style.border = "2px solid #6c757d"
       document.getElementById("circle3").style.border = "2px solid #6c757d"
       document.getElementById("circle4").style.border = "2px solid #6c757d"
+      document.title = "TextUlits - Light"
     }
   }
 
