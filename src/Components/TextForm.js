@@ -6,34 +6,41 @@ export default function TextForm(props) {
     const handleUpClick = () => {
         let upperText = text.toUpperCase();
         setText(upperText)
+        props.showAlert("Converted to UpperCase", "success")
     }
     const handleOnChange = (extract) => {
         setText(extract.target.value)
         // setText('change')
+        // props.showAlert("Converted to UpperCase", "success")
     }
     const handleLwcase = () => {
         let lowerText = text.toLowerCase();
         setText(lowerText)
+        props.showAlert("Converted to LowerCase", "success")
     }
     const handleCapCase = () => {
         let newText = text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) // This line credit goes to freecode.org
         setText(newText)
+        props.showAlert("Converted to Capitalize", "success")
         // console.log(newText);
     }
     const handleCopyToClipboard = () => {
         let copyText = text;
         navigator.clipboard.writeText(copyText)
-        setText('')
+        setText(copyText)
+        props.showAlert("Text is copied to clipboard", "success")
 
     }
     const handleRemoveExSpace = () => {
         let removeSpace = text.replace(/\s+/g, ' ').trim();
         setText(removeSpace)
+        props.showAlert("Extra space is remove", "success")
         // let removeSpace = text.split(/[ ]+/);
         // setText(removeSpace.join(""))
     }
     const handleClearAll = () => {
         setText('')
+        props.showAlert("Text Cleared", "danger")
     }
     const [text, setText] = useState("Enter Your Text Here"); // use this line for development
     // const [text, setText] = useState(""); // use this line for deployment
@@ -65,7 +72,7 @@ export default function TextForm(props) {
                 <p><span className="highlight">{text.split(" ").length}</span> Words <span className="highlight">{text.length}</span> Length</p>
                 <p><span className="highlight"> {0.008 * text.split(" ").length}</span> Minutes Read</p>
                 <h2 className="my-3">Live Preview</h2>
-                <div className="p-3 mb-5" id="resultBox">{text.length > 0 ? text : "Enter some text to see preview"}</div>
+                <div className="p-3 mb-5" id="resultBox">{text.length > 0 ? text : "Nothing to preview"}</div>
             </div>
         </>
     )
@@ -73,7 +80,8 @@ export default function TextForm(props) {
 
 // Type-Check
 TextForm.prototype = {
-    heading: PropTypes.string
+    heading: PropTypes.string,
+    showAlert: PropTypes.func
 }
 
 // Default Props 

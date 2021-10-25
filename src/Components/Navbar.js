@@ -1,20 +1,69 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types' // impts
 
 export default function Navbar(props) {
-    // Change Color
-    const [color, setColor] = useState(null);
-    console.log("color-Picker ", color);
-
-    const changeColor = (extract) => {
-        setColor(extract.target.value)
-        //   console.log(setColor);
-        //   console.log("onchange is click");
+    const color1 = () => {
+        // console.log("btn is clicked");
+        document.body.style.backgroundColor = "black"
+        document.body.style.color = "white"
+        document.getElementById("mybox").style.backgroundColor = "black"
+        // console.log(document.getElementById("mybox").style.backgroundColor = `${clr}`);
+        document.getElementById("mybox").style.borderColor = "white"
+        document.getElementById("mybox").style.color = "white"
+        document.getElementById("resultBox").style.borderColor = "white"
+        document.getElementById("circle1").style.border = "2px solid white"
+        document.getElementById("circle2").style.border = "2px solid white"
+        document.getElementById("circle3").style.border = "2px solid white"
+        document.getElementById("circle4").style.border = "2px solid white"
+    }
+    const color2 = () => {
+        // console.log("btn is clicked");
+        document.body.style.backgroundColor = "darkgreen"
+        document.body.style.color = "white"
+        document.getElementById("mybox").style.backgroundColor = "darkgreen"
+        // console.log(document.getElementById("mybox").style.backgroundColor = `${clr}`);
+        document.getElementById("mybox").style.borderColor = "white"
+        document.getElementById("mybox").style.color = "white"
+        document.getElementById("resultBox").style.borderColor = "white"
+        document.getElementById("circle1").style.border = "2px solid white"
+        document.getElementById("circle2").style.border = "2px solid white"
+        document.getElementById("circle3").style.border = "2px solid white"
+        document.getElementById("circle4").style.border = "2px solid white"
+    }
+    const color3 = () => {
+        // console.log("btn is clicked");
+        let colour = "navy"
+        document.body.style.backgroundColor = colour
+        document.body.style.color = "white"
+        document.getElementById("mybox").style.backgroundColor = colour
+        // console.log(document.getElementById("mybox").style.backgroundColor = `${clr}`);
+        document.getElementById("mybox").style.borderColor = "white"
+        document.getElementById("mybox").style.color = "white"
+        document.getElementById("resultBox").style.borderColor = "white"
+        document.getElementById("circle1").style.border = "2px solid white"
+        document.getElementById("circle2").style.border = "2px solid white"
+        document.getElementById("circle3").style.border = "2px solid white"
+        document.getElementById("circle4").style.border = "2px solid white"
+    }
+    const color4 = () => {
+        // console.log("btn is clicked");
+        document.body.style.backgroundColor = "maroon"
+        document.body.style.color = "white"
+        document.getElementById("mybox").style.backgroundColor = "maroon"
+        // console.log(document.getElementById("mybox").style.backgroundColor = `${clr}`);
+        document.getElementById("mybox").style.borderColor = "white"
+        document.getElementById("mybox").style.color = "white"
+        document.getElementById("resultBox").style.borderColor = "white"
+        document.getElementById("circle1").style.border = "2px solid white"
+        document.getElementById("circle2").style.border = "2px solid white"
+        document.getElementById("circle3").style.border = "2px solid white"
+        document.getElementById("circle4").style.border = "2px solid white"
     }
     return (
         <div >
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} p-0`}>
-                <div className="container-fluid p-2">
+                <div className="container-fluid">
                     <a className="navbar-brand" href="/">{props.title}</a>
                     <button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -28,9 +77,16 @@ export default function Navbar(props) {
                                 <a className="nav-link" href="/">{props.aboutText}</a>
                             </li>
                         </ul>
+                        {/* Color Plate */}
+                        <div className="nav-item d-flex ml-5" style={{ marginRight: "2rem" }}>
+                            <span className="circle nav-link btn" onClick={color1} id="circle1" style={{ height: "40px", width: "40px", border: "2px solid #6c757d", borderRadius: "50%", backgroundColor: "black" }}></span>
+                            <span className="circle nav-link btn mx-2" onClick={color2} id="circle2" style={{ height: "40px", width: "40px", border: "2px solid #6c757d", borderRadius: "50%", backgroundColor: "darkgreen" }}></span>
+                            <span className="circle nav-link btn" onClick={color3} id="circle3" style={{ height: "40px", width: "40px", border: "2px solid #6c757d", borderRadius: "50%", backgroundColor: "navy" }}></span>
+                            <span className="circle nav-link btn mx-2" onClick={color4} id="circle4" style={{ height: "40px", width: "40px", border: "2px solid #6c757d", borderRadius: "50%", backgroundColor: "maroon" }}></span>
+                        </div>
                         {/* <div className="nav-item"></div> */}
-                        <div className="nav-item mb-3">
-                            <input type="color" id="colors" onChange={changeColor} />
+                        <div className="nav-item my-3 d-flex">
+                            <input type="color" id="colors" onChange={props.colorPicker} />
                             {/* <input type="color" id="colors" onChange={e => setColor(e.target.value)} /> */}
                             <label className="form-check-label mx-2" htmlFor="color" >Set Color</label>
                         </div>
