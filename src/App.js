@@ -50,7 +50,7 @@ function App() {
       document.getElementById("circle3").style.border = "2px solid white"
       document.getElementById("circle4").style.border = "2px solid white"
       document.title = "TextUlits - Dark"
-    /* 
+    
       // This is not user friendly
       setInterval(() => {
         document.title = "TextUlits - is Amazing"
@@ -61,7 +61,7 @@ function App() {
       setInterval(() => {
         document.title = "TextUlits - is Amazing"
       }, 1500);
-    */
+    
     }
     else {
       setMode('light')
