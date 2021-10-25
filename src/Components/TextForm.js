@@ -10,8 +10,6 @@ export default function TextForm(props) {
     }
     const handleOnChange = (extract) => {
         setText(extract.target.value)
-        // setText('change')
-        // props.showAlert("Converted to UpperCase", "success")
     }
     const handleLwcase = () => {
         let lowerText = text.toLowerCase();
@@ -42,17 +40,18 @@ export default function TextForm(props) {
         setText('')
         props.showAlert("Text Cleared", "danger")
     }
-    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    // const [text, setText] = useState(""); // use this line for deployment
+    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 
     return (
         <>
-            <div className="container my-3">
+            <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
                 <h1 className="mb-4">{props.heading}</h1>
                 <div className="mb-4">
-                    <textarea className="form-control" value={text} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
+                    <textarea className="form-control " value={text} style={props.toggleStyle} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
+                    {/* <textarea className="form-control" value={text} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea> */}
                 </div>
             </div>
             <div className="container btn-container">
@@ -66,13 +65,13 @@ export default function TextForm(props) {
                 <button className="btn btn-primary" onClick={handleClearAll}>Clear All</button>
 
             </div>
-            <div className="container">
+            <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
                 <h2 className="my-4 mb-3">Text Summary</h2>
                 {/* <p><span className="highlight">{() => { if (!text === '') { text.split(" ").length } }}</span> newText <span className="highlight">{text.length}</span> Length</p> */}
-                <p><span className="highlight">{text.split(" ").length}</span> Words <span className="highlight">{text.length}</span> Length</p>
-                <p><span className="highlight"> {0.008 * text.split(" ").length}</span> Minutes Read</p>
+                <div><span className="highlight">{text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> words <span className="highlight">{text.length}</span> characters</div>
+                <div><span className="highlight"> {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> Minutes Read</div>
                 <h2 className="my-3">Live Preview</h2>
-                <div className="p-3 mb-5" id="resultBox">{text.length > 0 ? text : "Nothing to preview"}</div>
+                <div className="p-3 mb-5" style={props.toggleStyle} id="resultBox">{text.length > 0 ? text : "Nothing to preview"}</div>
             </div>
         </>
     )
