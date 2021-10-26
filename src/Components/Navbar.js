@@ -32,11 +32,20 @@ export default function Navbar(props) {
                                 {/* <a className="nav-link" href="#">{props.aboutText}</a> */}
                             </li>
                         </ul>
+                        {/* Color Palate */}
+                        <div className="d-flex">
+                            <button className="bg-primary rounded mr-2" onClick={() => { props.toggleMode('primary') }} style={{ height: "30px", width: "30px" }}></button>
+                            <button className="bg-danger rounded mx-2" onClick={() => { props.toggleMode('danger') }} style={{ height: "30px", width: "30px" }}></button>
+                            <button className="bg-warning rounded mx-2" onClick={() => { props.toggleMode('warning') }} style={{ height: "30px", width: "30px" }}></button>
+                            <button className="bg-success rounded mx-2" onClick={() => { props.toggleMode('success') }} style={{ height: "30px", width: "30px" }}></button>
+                            <button className="bg-light rounded mx-2" onClick={() => { props.toggleMode('light') }} style={{ height: "30px", width: "30px" }}></button>
+                            <button className="bg-dark rounded mx-2" onClick={() => { props.toggleMode('dark') }} style={{ height: "30px", width: "30px" }}></button>
+                        </div>
                         {/* Toggle Mode Btn */}
-                        <div className={`form-check form-switch d-flex mb-3 mb-lg-0 text-${props.mode === "light" ? "dark" : "light"}`} >
+                        {/* <div className={`form-check form-switch d-flex mb-3 mb-lg-0 text-${props.mode === "light" ? "dark" : "light"}`} >
                             <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="modeSwitch" />
                             <label className="form-check-label mx-2" htmlFor="modeSwitch" >{props.btnText}</label>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>

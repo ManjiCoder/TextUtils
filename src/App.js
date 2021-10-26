@@ -26,7 +26,18 @@ function App() {
     }, 1100);
   }
 
-  const toggleMode = () => {
+  const removeClass = () => {
+    document.body.classList.remove("bg-light")
+    document.body.classList.remove("bg-dark")
+    document.body.classList.remove("bg-primary")
+    document.body.classList.remove("bg-danger")
+    document.body.classList.remove("bg-warning")
+    document.body.classList.remove("bg-success")
+  }
+  const toggleMode = (cls) => {
+    removeClass()
+    document.body.classList.add('bg-' + cls)
+    console.log(cls);
     if (mode === "light") {
       setMode("dark")
       setBtnText("Disable Dark Mode")
