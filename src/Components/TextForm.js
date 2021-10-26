@@ -40,8 +40,8 @@ export default function TextForm(props) {
         setText('')
         props.showAlert("Text Cleared", "danger")
     }
-    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    // const [text, setText] = useState(""); // use this line for deployment
+    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 

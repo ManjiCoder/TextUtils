@@ -1,15 +1,16 @@
 import './App.css';
 import React, { useState } from 'react'
-import About from './Components/About';
+// import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm'
 import Alert from './Components/Alert';
+
 // Router Specific Stuff
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+// } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');  // Wheather Mode is Dark or Light
@@ -26,18 +27,7 @@ function App() {
     }, 1100);
   }
 
-  const removeClass = () => {
-    document.body.classList.remove("bg-light")
-    document.body.classList.remove("bg-dark")
-    document.body.classList.remove("bg-primary")
-    document.body.classList.remove("bg-danger")
-    document.body.classList.remove("bg-warning")
-    document.body.classList.remove("bg-success")
-  }
-  const toggleMode = (cls) => {
-    removeClass()
-    document.body.classList.add('bg-' + cls)
-    console.log(cls);
+  const toggleMode = () => {
     if (mode === "light") {
       setMode("dark")
       setBtnText("Disable Dark Mode")
@@ -65,15 +55,15 @@ function App() {
   return (
     <>
       {/* This is for GitHub */}
-      {/* <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} />
+      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} />
       <div className="container py-3" style={{ height: "50px" }}>
         <Alert alert={alert} />
       </div>
-      <TextForm heading="Enter the text here to analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} /> */}
+      <TextForm heading="Enter the text here to analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} />
       {/* This is for GitHub */}
 
       {/* Router Specific Stuff */}
-      <Router>
+      {/* <Router>
         <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} />
         <div className="container py-3" style={{ height: "50px" }}>
           <Alert alert={alert} />
@@ -86,10 +76,10 @@ function App() {
             <About aboutText="About TextUtils" mode={mode} toggleStyle={toggleStyle} />
           </Route>
         </Switch>
-      </Router>
+      </Router> */}
       {/* Without exact in route
         /user --> Component 1
-        /user/home --> Component 2 */}
+        /user/home --> Component 2 about component wala seen */}
     </>
   );
 }
