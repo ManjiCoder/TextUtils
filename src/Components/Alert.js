@@ -7,19 +7,13 @@ export default function Alert(props) {
         const lower = word.toLowerCase()
         return lower.charAt(0).toUpperCase() + lower.slice(1)
     }
-    return (props.alert && <div className={`d-flex align-items-center alert alert-${props.alert.type} alert-dismissible fade show`} style={{height:"40px"}} id="alert" role="alert">
+    return (props.alert && <div className={`d-flex align-items-center alert alert-${props.alert.type} alert-dismissible fade show`} style={{ height: "40px" }} id="alert" role="alert">
         <strong>{capitalize(props.alert.type)}:&nbsp; </strong>{props.alert.msg}
     </div>
-        // <div className={`alert alert-danger alert-dismissible fade show`} id="alert" role="alert">
-        //     <strong>Type: </strong>msg
-        // </div>
-
     )
 }
 
 // Specifies the values for props:
 Alert.protoTypes = {
     alert: PropTypes.func
-
-
 }

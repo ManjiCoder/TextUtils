@@ -40,8 +40,8 @@ export default function TextForm(props) {
         setText('')
         props.showAlert("Text Cleared", "danger")
     }
-    // const [text, setText] = useState("Enter Your Text Here"); // use this line for development
-    const [text, setText] = useState(""); // use this line for deployment
+    const [text, setText] = useState("Enter Your Text Here"); // use this line for development
+    // const [text, setText] = useState(""); // use this line for deployment
 
     // text = 'this is text'    // Wrong way to change state
     // setText('this is text')  // Correct way to change state 
@@ -55,19 +55,18 @@ export default function TextForm(props) {
                 </div>
             </div>
             <div className="container btn-container">
-                <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
-                <button className="btn btn-primary" onClick={handleLwcase}>Convert to Lowercase</button>
-                <button className="btn btn-primary" onClick={handleRemoveExSpace}>Remove Spaces</button>
-                <button className="btn btn-primary" onClick={handleCapCase}>Convert to Capitalize</button>
-                <button className="btn btn-primary" onClick={handleCopyToClipboard}>Copy To Clipboard</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleLwcase}>Convert to Lowercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleRemoveExSpace}>Remove Spaces</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleCapCase}>Convert to Capitalize</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleCopyToClipboard}>Copy To Clipboard</button>
+                <button disabled={text.length === 0} className="btn btn-primary" onClick={handleClearAll}>Clear All</button>
                 {/* { 1 Liner Code} */}
-                {/* <button className="btn btn-primary" onClick={() => navigator.clipboard.writeText(text)}>Copy To Clipboard</button> */}
-                <button className="btn btn-primary" onClick={handleClearAll}>Clear All</button>
+                {/* <button disabled={text.length===0} className="btn btn-primary" onClick={() => navigator.clipboard.writeText(text)}>Copy To Clipboard</button> */}
 
             </div>
             <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
                 <h2 className="my-4 mb-3">Text Summary</h2>
-                {/* <p><span className="highlight">{() => { if (!text === '') { text.split(" ").length } }}</span> newText <span className="highlight">{text.length}</span> Length</p> */}
                 <div><span className="highlight">{text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> words <span className="highlight">{text.length}</span> characters</div>
                 <div><span className="highlight"> {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> Minutes Read</div>
                 <h2 className="my-3">Live Preview</h2>
@@ -85,5 +84,5 @@ TextForm.prototype = {
 
 // Default Props 
 TextForm.defaultProps = {
-    heading: "This is form"
+    heading: "TextUtlits"
 }
