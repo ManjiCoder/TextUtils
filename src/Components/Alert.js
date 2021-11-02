@@ -7,9 +7,12 @@ export default function Alert(props) {
         const lower = word.toLowerCase()
         return lower.charAt(0).toUpperCase() + lower.slice(1)
     }
-    return (props.alert && <div className={`d-flex align-items-center alert alert-${props.alert.type} alert-dismissible fade show`} style={{ height: "40px" }} id="alert" role="alert">
-        <strong>{capitalize(props.alert.type)}:&nbsp; </strong>{props.alert.msg}
-    </div>
+    return (
+        <div className="container py-3" style={{ height: "50px" }}>
+            {props.alert && <div className={`d-flex align-items-center alert alert-${props.alert.type} alert-dismissible fade show`} style={{ height: "40px" }} id="alert" role="alert">
+                <strong>{capitalize(props.alert.type)}:&nbsp; </strong>{props.alert.msg}
+            </div>}
+        </div>
     )
 }
 

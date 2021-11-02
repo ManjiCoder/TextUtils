@@ -16,7 +16,8 @@ export default function TextForm(props) {
         setText(lowerText)
         props.showAlert("Converted to LowerCase", "success")
     }
-    const handleCapCase = () => {
+
+    const handleCapCase = (cls) => {
         let newText = text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase()) // This line credit goes to freecode.org
         setText(newText)
         props.showAlert("Converted to Capitalize", "success")
@@ -33,8 +34,6 @@ export default function TextForm(props) {
         let removeSpace = text.replace(/\s+/g, ' ').trim();
         setText(removeSpace)
         props.showAlert("Extra space is remove", "success")
-        // let removeSpace = text.split(/[ ]+/);
-        // setText(removeSpace.join(""))
     }
     const handleClearAll = () => {
         setText('')
@@ -48,9 +47,9 @@ export default function TextForm(props) {
     return (
         <>
             <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
-                <h1 className="mb-4">{props.heading}</h1>
+                <h2 className="mb-4">{props.heading}</h2>
                 <div className="mb-4">
-                    <textarea className="form-control " value={text} style={props.toggleStyle} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
+                    <textarea className="form-control" value={text} style={props.toggleStyle} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
                     {/* <textarea className="form-control" value={text} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea> */}
                 </div>
             </div>

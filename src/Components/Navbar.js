@@ -1,21 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types' // impts
-// import { Link } from 'react-router-dom'; //* Router Specific Stuff */
-
-
+import { Link } from 'react-router-dom'; //* Router Specific Stuff */
 
 export default function Navbar(props) {
-    let navbarStyle = {
-        background: props.mode === "dark" ? "linear-gradient(6deg, #00378a, hsl(263 90% 51% / 1))" : "white"
-    }
 
     return (
         <div >
-            <nav className={`navbar navbar-expand-lg navbar-${props.mode} p-2`} style={navbarStyle}>
+            <nav className={`navbar navbar-expand-lg navbar-${props.mode} p-2`} style={props.purpleStyle}>
                 <div className="container-fluid">
                     {/* Router Specific Stuff  */}
-                    {/* <Link className="navbar-brand" to="/">{props.title}</Link> */}
-                    <a className="navbar-brand" href="#">{props.title}</a>
+                    <Link className="navbar-brand" to="/">{props.title}</Link>
+                    {/* <a className="navbar-brand" href="#">{props.title}</a> */}
                     <button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,13 +18,13 @@ export default function Navbar(props) {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 {/* Router Specific Stuff  */}
-                                {/* <Link className="nav-link active" aria-current="page" to="/">Home</Link> */}
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
                             </li>
                             <li className="nav-item">
                                 {/* Router Specific Stuff  */}
-                                {/* <Link className="nav-link" to="/about">{props.aboutText}</Link> */}
-                                <a className="nav-link" href="#">{props.aboutText}</a>
+                                <Link className="nav-link" to="/about">{props.aboutText}</Link>
+                                {/* <a className="nav-link" href="#">{props.aboutText}</a> */}
                             </li>
                         </ul>
                         {/* Toggle Mode Btn */}
