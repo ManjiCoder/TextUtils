@@ -49,7 +49,7 @@ function App() {
     color: mode === "dark" ? "white" : "black",
     border: "2px solid",
     borderColor: mode === "dark" ? "white" : "hsl(0deg 0% 0% / 66%)",
-    transition: "none"
+    transition: "none",
   }
 
   // Nav & Footer
