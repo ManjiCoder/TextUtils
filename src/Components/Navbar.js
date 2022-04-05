@@ -4,6 +4,7 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types' // impts
 import {
+	NavLink,
 	Link,
 	useLocation
 } from 'react-router-dom'; //* Router Specific Stuff */
@@ -31,7 +32,6 @@ export default function Navbar(props) {
      <div className="container-fluid">
     {/* Router Specific Stuff  */}
   <Link className={`navbar-brand`} to="/" onClick={() => setProgress(100)}>{props.title}</Link>
-   {/* <a className="navbar-brand" href="#">{props.title}</a> */}
    <button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
     </button>
@@ -39,15 +39,15 @@ export default function Navbar(props) {
     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
     <li className="nav-item">
    {/* Router Specific Stuff  */}
-    <Link className={`nav-link ${location.pathname === '/'?'active': ''}`} aria-current="page" to="/"
-				onClick={() => setProgress(100)}>Home</Link>
-   {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
+    <NavLink className={`nav-link`} aria-current="page" to="/"
+				onClick={() => setProgress(100)}>Home
+		</NavLink>
     </li>
     <li className="nav-item">
    {/* Router Specific Stuff  */}
-     <Link className={`nav-link ${location.pathname === '/about'?'active': ''}`} to="/about"onClick={() => setProgress(100)}>{props.aboutText}</Link>
-   {/* <a className="nav-link" href="#">{props.aboutText}</a> */}
-      </li>
+    <NavLink className={`nav-link`} to="/about"onClick={() => setProgress(100)}>{props.aboutText}
+    </NavLink>
+    </li>
 			</ul>
    {/* Toggle Mode Btn */}
     <div className={`form-check form-switch d-flex mb-3 mb-lg-0 text-${props.mode === "light" ? "dark": "light"}`}>
