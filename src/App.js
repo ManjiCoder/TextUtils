@@ -89,9 +89,9 @@ function App() {
      <Route path="/about" element={
 				<About aboutText="About TextUtils" mode={mode} toggleStyle={toggleStyle} />
 				} />
-        </Routes>
+    </Routes>
 		<Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />
-	</BrowserRouter>
+		</BrowserRouter>
 		</div>
 	);
 }
