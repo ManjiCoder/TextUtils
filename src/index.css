@@ -1,3 +1,63 @@
-/* .accordion-button::after{
-    filter: invert(1);
-} */
+/* To Check System Theme & If It Is Dark Then Media Query Will Fire*/
+@media only screen and (prefers-color-scheme: dark) {
+    nav {
+        background: linear-gradient(6deg, rgb(0, 55, 138), rgb(104, 18, 243)) !important;
+    }
+
+    .navbar-brand {
+        color: white !important;
+    }
+
+    nav a {
+        color: rgb(255 255 255 / 55%) !important;
+    }
+
+    .harry {
+        color: white !important;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    .navbar-toggler {
+        color: rgba(255, 255, 255, .55) !important;
+        border-color: rgba(255, 255, 255, .1) !important;
+    }
+
+    body {
+        background-color: rgb(1, 23, 56) !important;
+    }
+
+    h1, h2, .highlight, .heading {
+        color: white !important;
+    }
+
+    .form-control, .preview, .accordion-item {
+        background-color: rgb(0, 41, 102) !important;
+        color: white !important;
+        border: 2px solid white !important;
+    }
+
+    .accordion-button {
+        background-color: rgb(0, 41, 102) !important;
+        color: white !important;
+        border-bottom: 2px solid white !important;
+    }
+
+    footer {
+        background: linear-gradient(6deg, rgb(0, 55, 138), rgb(104, 18, 243)) !important;
+    }
+
+    footer span, a {
+        color: white !important;
+    }
+
+    .footerImg {
+        filter: invert(1) !important;
+    }
+
+    .form-check {
+        display: none !important;
+    }
+}

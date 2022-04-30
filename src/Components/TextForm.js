@@ -52,7 +52,7 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
+            <div className={`main container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
                 <h2 className="mb-4">{props.heading}</h2>
                 <div className="mb-4">
                     <textarea className="form-control" value={text} style={props.toggleStyle} id="mybox" onChange={handleOnChange} rows="8" placeholder="Enter Your Text Here"></textarea>
@@ -69,10 +69,10 @@ export default function TextForm(props) {
             </div>
             <div className={`container my-3 text-${props.mode === "light" ? "dark" : "light"}`}>
                 <h2 className="my-4 mb-3">Text Summary</h2>
-                <div><span className="highlight">{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length}</span> words <span className="highlight">{text.length}</span> characters</div>
-                <div><span className="highlight"> {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> Minutes Read</div>
+                <div className="heading"><span className="highlight">{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length}</span> words <span className="highlight">{text.length}</span> characters</div>
+                <div className="heading"><span className="highlight"> {0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length}</span> Minutes Read</div>
                 <h2 className="my-3">Live Preview</h2>
-                <div className="p-3 mb-5" style={props.toggleStyle} id="resultBox">{text.length > 0 ? text : "Nothing to preview"}</div>
+                <div className="preview p-3 mb-5" style={props.toggleStyle} id="resultBox">{text.length > 0 ? text : "Nothing to preview"}</div>
             </div>
         </>
     )

@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types' // impts
-import { Link } from 'react-router-dom'; //* Router Specific Stuff */
+import { Link, useLocation, NavLink } from 'react-router-dom'; //* Router Specific Stuff */
+import LoadingBar from 'react-top-loading-bar'
 
 export default function Navbar(props) {
+    let location = useLocation();
+    useEffect(() => {
+        console.log(location);    //  For Dev
+    }, [location]);
+
+    const [progress, setProgress] = useState(0)
 
     return (
         <div >
+            <LoadingBar
+                color='#f11946'
+                progress={progress}
+                height={3.5}
+                onLoaderFinished={() => setProgress(0)}
+            />
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} p-2`} style={props.purpleStyle}>
                 <div className="container-fluid">
                     {/* Router Specific Stuff  */}
-                    <Link className="navbar-brand" to="/">{props.title}</Link>
+                    <Link className="navbar-brand" to="/" onClick={() => setProgress(100)}>{props.title}</Link>
                     {/* <a className="navbar-brand" href="#">{props.title}</a> */}
                     <button className="navbar-toggler mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -18,12 +31,12 @@ export default function Navbar(props) {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 {/* Router Specific Stuff  */}
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <NavLink className={`nav-link ${location.pathname === '/' ? 'harry' : ''}`} aria-current="page" to="/" onClick={() => setProgress(100)}>Home</NavLink>
                                 {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
                             </li>
                             <li className="nav-item">
                                 {/* Router Specific Stuff  */}
-                                <Link className="nav-link" to="/about">{props.aboutText}</Link>
+                                <NavLink className={`nav-link ${location.pathname === '/about' ? 'harry' : ''}`} to="/about" onClick={() => setProgress(100)}>{props.aboutText}</NavLink>
                                 {/* <a className="nav-link" href="#">{props.aboutText}</a> */}
                             </li>
                         </ul>

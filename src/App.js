@@ -8,15 +8,17 @@ import Footer from './Components/Footer';
 
 // Router Specific Stuff
 import {
-  BrowserRouter as Router,
-  Switch,
+  BrowserRouter,
+  Routes,
   Route,
 } from "react-router-dom";
 
 function App() {
+
   const [mode, setMode] = useState('light');  // Wheather Mode is Dark or Light
   const [btnText, setBtnText] = useState("Enable Dark Mode"); // Text to change Mode Dark or Light
   const [alert, setAlert] = useState(null);   //  Alert
+
   // Function to set Alert 
   const showAlert = (message, type) => {
     setAlert({
@@ -57,29 +59,19 @@ function App() {
     background: mode === "dark" ? "linear-gradient(6deg, #00378a, hsl(263 90% 51% / 1))" : "white"
   }
   return (
-    <>
-      {/* This is for GitHub */}
-      {/* <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} purpleStyle={purpleStyle} />
+    <BrowserRouter>
+      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} purpleStyle={purpleStyle} />
       <Alert alert={alert} />
-      <TextForm heading="Enter The Text Here To Analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} />
-      <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} /> */}
-      {/* This is for GitHub */}
-
-      {/* Router Specific Stuff */}
-      <Router>
-        <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} purpleStyle={purpleStyle} />
-        <Alert alert={alert} />
-        <Switch>
-          <Route exact path="/">
-            <TextForm heading="Enter The Text Here To Analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} />
-          </Route>
-          <Route exact path="/about">
-            <About aboutText="About TextUtils" mode={mode} toggleStyle={toggleStyle} />
-          </Route>
-        </Switch>
-        <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />
-      </Router>
-    </>
+      <Routes>
+        <Route path="/" element={
+          <TextForm heading="Enter The Text Here To Analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} />
+        } />
+        <Route path="/about" element={
+          <About aboutText="About TextUtils" mode={mode} toggleStyle={toggleStyle} />
+        } />
+      </Routes>
+      <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />
+    </BrowserRouter>
   );
 }
 
