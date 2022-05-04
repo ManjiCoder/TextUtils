@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react'
-import About from './Components/About';
+// import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm'
 import Alert from './Components/Alert';
@@ -9,9 +9,10 @@ import Footer from './Components/Footer';
 // Router Specific Stuff
 import {
   BrowserRouter,
-  Routes,
-  Route,
+  // Routes,// For GitHub
+  // Route, // For GitHub
 } from "react-router-dom";
+
 
 function App() {
 
@@ -60,7 +61,15 @@ function App() {
   }
   return (
     <BrowserRouter>
+      {/* This is for GitHub */}
       <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} purpleStyle={purpleStyle} />
+      <Alert alert={alert} />
+      <TextForm heading="Enter The Text Here To Analyze" mode={mode} toggleStyle={toggleStyle} showAlert={showAlert} />
+      <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />
+      {/* This is for GitHub */}
+
+      {/* This is for Hosting */}
+      {/*<Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} btnText={btnText} purpleStyle={purpleStyle} />
       <Alert alert={alert} />
       <Routes>
         <Route path="/" element={
@@ -70,7 +79,8 @@ function App() {
           <About aboutText="About TextUtils" mode={mode} toggleStyle={toggleStyle} />
         } />
       </Routes>
-      <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />
+      <Footer title="TextUtils" mode={mode} purpleStyle={purpleStyle} />*/}
+      {/* This is for Hosting */}
     </BrowserRouter>
   );
 }
